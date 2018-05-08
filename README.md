@@ -4,7 +4,7 @@ Root is a company built by developers for developers. Open Source Software is pa
 
 Our SDKs are community maintained. (because we’re not experts in go, or lolcode, or ruby, or swift or rust or any of the plethora of wonderful languages living out in the wild).
 
-This repo for the Ruby Insurance SDK  is currently a simple wrapper around Root's Insurance API. The full API documentation can be found [here](https://app.root.co.za/docs/insurance/api). 
+This repo for the Ruby Insurance SDK  is currently a simple wrapper around Root's Insurance API. The full API documentation can be found [here](https://app.root.co.za/docs/insurance/api).
 
 For help and support, please reach out to us on the Root Club Slack.
 
@@ -13,7 +13,7 @@ For help and support, please reach out to us on the Root Club Slack.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'root', git: 'git@github.com:root-community/root-insurance-ruby.git', tag: "0.0.1"
+gem 'root-insurance'
 ```
 
 And then execute:
@@ -22,11 +22,11 @@ And then execute:
 
 ## Usage
 
-See the [wiki](https://github.com/RootBank/root-insurance-ruby/wiki).
+See the [wiki](https://github.com/root-community/root-insurance-ruby/wiki).
 
 ## Contributing
 If you wish to contribute to this repository, please fork it and send a PR our way.
 
 ## Code of Conduct
-Root’s developers and our community are expected to abide by the [Contributor Covenant Code of Conduct](https://github.com/root-community/root-insurance-ruby/tree/master/CODE_OF_CONDUCT.md). 
+Root’s developers and our community are expected to abide by the [Contributor Covenant Code of Conduct](https://github.com/root-community/root-insurance-ruby/tree/master/CODE_OF_CONDUCT.md).
 Play nice.

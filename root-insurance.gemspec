@@ -6,8 +6,8 @@ require "root-insurance/version"
 Gem::Specification.new do |spec|
   spec.name          = "root-insurance"
   spec.version       = Root::Insurance::VERSION
-  spec.authors       = ["Martin Pretorius"]
-  spec.email         = ["glasnoster@gmail.com"]
+  spec.authors       = ["Root Wealth"]
+  spec.email         = ["hello@root.co.za"]
 
   spec.summary       = "Root Insurance API client"
   spec.description   = "Root Insurance API client"
