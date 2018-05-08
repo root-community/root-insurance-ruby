@@ -1,4 +1,4 @@
-describe Root::Insurance::Client::Quote do
+describe RootInsurance::Api::Quote do
   let(:base_url) { "https://sandbox.root.co.za/v1/insurance" }
   let(:url) { "#{base_url}/quotes" }
 
@@ -6,7 +6,7 @@ describe Root::Insurance::Client::Quote do
   let(:app_secret)  { 'app_secret' }
   let(:environment) { :sandbox }
 
-  let(:client) { Root::Insurance::Client.new(app_id, app_secret, environment) }
+  let(:client) { RootInsurance::Client.new(app_id, app_secret, environment) }
 
   describe :create_quote do
     context "root gadgets" do

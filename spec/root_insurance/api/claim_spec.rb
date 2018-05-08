@@ -1,4 +1,4 @@
-describe Root::Insurance::Client::Claim do
+describe RootInsurance::Api::Claim do
   let(:base_url) { "https://sandbox.root.co.za/v1/insurance" }
   let(:url) { "#{base_url}/claims" }
 
@@ -6,7 +6,7 @@ describe Root::Insurance::Client::Claim do
   let(:app_secret)  { 'app_secret' }
   let(:environment) { :sandbox }
 
-  let(:client) { Root::Insurance::Client.new(app_id, app_secret, environment) }
+  let(:client) { RootInsurance::Client.new(app_id, app_secret, environment) }
 
   let(:claim_id) { "d3d13c48-4dc3-4816-8d01-de321587822" }
 

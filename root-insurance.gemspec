@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "root-insurance/version"
+require "root_insurance/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "root-insurance"
-  spec.version       = Root::Insurance::VERSION
+  spec.name          = "root_insurance"
+  spec.version       = RootInsurance::VERSION
   spec.authors       = ["Root Wealth"]
   spec.email         = ["hello@root.co.za"]
 
   spec.summary       = "Root Insurance API client"
   spec.description   = "Root Insurance API client"
-  spec.homepage      = "https://github.com/RootBank/root-insurance-ruby"
+  spec.homepage      = "https://github.com/root-community/root-insurance-ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

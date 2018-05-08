@@ -1,4 +1,4 @@
-class Root::Insurance::Client
+module RootInsurance::Api
   module Policy
     def issue_policy(application_id:)
       data = {

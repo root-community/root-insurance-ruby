@@ -1,6 +1,5 @@
-class Root::Insurance::Client
+module RootInsurance::Api
   module Application
-
     def create_application(policyholder_id:, quote_package_id:, monthly_premium:, serial_number: nil)
       data = {
         policyholder_id:  policyholder_id,
@@ -11,6 +10,5 @@ class Root::Insurance::Client
 
       post(:applications, data)
     end
-
   end
 end

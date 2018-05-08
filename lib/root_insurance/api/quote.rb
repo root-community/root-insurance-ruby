@@ -1,4 +1,4 @@
-class Root::Insurance::Client
+module RootInsurance::Api
   module Quote
     def create_quote(opts={})
       type = opts[:type]

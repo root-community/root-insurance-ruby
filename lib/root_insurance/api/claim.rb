@@ -1,10 +1,10 @@
-class Root::Insurance::Client
+module RootInsurance::Api
   module Claim
     def list_claims(status: nil, approval: nil)
       query = {
         claim_status:    status,
         approval_status: approval
-      }
+      }.reject { |key, value| value.nil? }
 
       get(:claims, query)
     end
@@ -17,7 +17,7 @@ class Root::Insurance::Client
       data = {
         policy_id:        policy_id,
         policy_holder_id: policy_holder_id
-      }
+      }.reject { |key, value| value.nil? }
 
       post(:claims, data)
     end
@@ -37,6 +37,5 @@ class Root::Insurance::Client
     def list_claim_events(id:)
       get("claims/#{id}/events")
     end
-
   end
 end

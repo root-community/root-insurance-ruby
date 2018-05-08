@@ -1,4 +1,4 @@
-describe Root::Insurance::Client::Application do
+describe RootInsurance::Api::Application do
   let(:base_url) { "https://sandbox.root.co.za/v1/insurance" }
   let(:url) { "#{base_url}/applications" }
 
@@ -6,7 +6,7 @@ describe Root::Insurance::Client::Application do
   let(:app_secret)  { 'app_secret' }
   let(:environment) { :sandbox }
 
-  let(:client) { Root::Insurance::Client.new(app_id, app_secret, environment) }
+  let(:client) { RootInsurance::Client.new(app_id, app_secret, environment) }
 
   describe :create_application do
     let(:expected_body) do

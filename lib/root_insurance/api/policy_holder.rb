@@ -1,6 +1,5 @@
-class Root::Insurance::Client
+module RootInsurance::Api
   module PolicyHolder
-
     def create_policy_holder(id:, first_name:, last_name:, email: nil, date_of_birth: nil, cellphone: nil)
       raise ArgumentError.new('id needs to be a hash') unless id.is_a? Hash
 
@@ -11,7 +10,7 @@ class Root::Insurance::Client
         date_of_birth: date_of_birth,
         email:         email,
         cellphone:     cellphone
-      }
+      }.reject { |key, value| value.nil? }
 
       post(:policyholders, data)
     end
@@ -28,13 +27,13 @@ class Root::Insurance::Client
       data = {
         email:     email,
         cellphone: cellphone
-      }
+      }.reject { |key, value| value.nil? }
+
       patch("policyholders/#{id}", data)
     end
 
     def list_policy_holder_events(id:)
       get("policyholders/#{id}/events")
     end
-
   end
 end

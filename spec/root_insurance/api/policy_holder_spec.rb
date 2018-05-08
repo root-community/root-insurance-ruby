@@ -1,4 +1,4 @@
-describe Root::Insurance::Client::PolicyHolder do
+describe RootInsurance::Api::PolicyHolder do
   let(:base_url) { "https://sandbox.root.co.za/v1/insurance" }
   let(:url) { "#{base_url}/policyholders" }
 
@@ -6,7 +6,7 @@ describe Root::Insurance::Client::PolicyHolder do
   let(:app_secret)  { 'app_secret' }
   let(:environment) { :sandbox }
 
-  let(:client) { Root::Insurance::Client.new(app_id, app_secret, environment) }
+  let(:client) { RootInsurance::Client.new(app_id, app_secret, environment) }
 
   let(:policyholder_id) { "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e" }
 
