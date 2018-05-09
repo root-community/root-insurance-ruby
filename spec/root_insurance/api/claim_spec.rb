@@ -136,6 +136,9 @@ describe RootInsurance::Api::Claim do
   end
 
   describe :create_claim_attachment do
+    let(:path) { 'spec/support/unicorn.png' }
+    let(:encoded) { Base64.encode64(File.binread(path)) }
+    let(:description) { "A unicorn" }
     let(:post_url) { "#{url}/#{claim_id}/attachments" }
 
     it "posts to the correct url" do
@@ -146,10 +149,6 @@ describe RootInsurance::Api::Claim do
     end
 
     context "given a file path" do
-      let(:path) { 'spec/support/unicorn.png' }
-      let(:encoded) { Base64.encode64(File.binread(path)) }
-      let(:description) { "A unicorn" }
-
       it "encodes the file data" do
         stub_request(:post, post_url)
           .with(body: hash_including(file_base64: encoded))
@@ -185,7 +184,35 @@ describe RootInsurance::Api::Claim do
 
     context "given a file object" do
       it "encodes the file data" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_base64: encoded))
+          .to_return(body: "{}")
 
+        client.create_claim_attachment(claim_id: claim_id, file: File.open(path))
+      end
+
+      it "includes the file name" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_name: "unicorn.png"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, file: File.open(path))
+      end
+
+      it "includes the file type" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_type: "image/png"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, file: File.open(path))
+      end
+
+      it "includes the description" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(description: description))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, file: File.open(path), description: description)
       end
     end
 

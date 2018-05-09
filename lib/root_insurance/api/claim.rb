@@ -40,9 +40,11 @@ module RootInsurance::Api
       get("claims/#{id}/events")
     end
 
-    def create_claim_attachment(claim_id:, path: nil, description: '')
+    def create_claim_attachment(claim_id:, path: nil, file: nil, description: '')
       data = if path
         claim_attachment_from_path(path)
+      elsif file
+        claim_attachment_from_file(file)
       else
         {}
       end.merge({description: description})
@@ -59,6 +61,16 @@ module RootInsurance::Api
         file_base64: encoded_data,
         file_name:   file_name,
         file_type:   MimeMagic.by_magic(File.open(path)).type
+      }
+    end
+
+    def claim_attachment_from_file(file)
+      encoded_data = Base64.encode64(file.read)
+
+      {
+        file_base64: encoded_data,
+        file_name:   File.basename(file.path),
+        file_type:   MimeMagic.by_magic(file).type
       }
     end
 
