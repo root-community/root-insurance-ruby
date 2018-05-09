@@ -1,5 +1,7 @@
 # Root Insurance Ruby
 
+[![Build Status](https://travis-ci.org/root-community/root-insurance-ruby.svg?branch=master)](https://travis-ci.org/root-community/root-insurance-ruby)
+
 Root is a company built by developers for developers. Open Source Software is part of our culture. We open-source as much of our codebase as we can.
 
 Our SDKs are community maintained. (because we’re not experts in go, or lolcode, or ruby, or swift or rust or any of the plethora of wonderful languages living out in the wild).
