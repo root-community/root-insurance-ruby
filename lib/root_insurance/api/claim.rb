@@ -40,7 +40,7 @@ module RootInsurance::Api
       get("claims/#{id}/events")
     end
 
-    def create_claim_attachment(claim_id:, path: nil, file: nil, bytes: nil, file_name: nil, file_type: nil, description: '')
+    def create_claim_attachment(claim_id:, path: nil, file: nil, bytes: nil, base64: nil, file_name: nil, file_type: nil, description: '')
       data = if path
         claim_attachment_from_path(path)
       elsif file
@@ -48,6 +48,10 @@ module RootInsurance::Api
       elsif bytes
         raise ArgumentError.new("file_name is required when supplying bytes") unless file_name
         claim_attachment_from_bytes(bytes, file_name, file_type)
+      elsif base64
+        raise ArgumentError.new("file_name is required when supplying base64") unless file_name
+        raise ArgumentError.new("file_type is required when supplying base64") unless file_type
+        claim_attachment_from_base46(base64, file_name, file_type)
       else
         {}
       end.merge({description: description})
@@ -84,6 +88,14 @@ module RootInsurance::Api
         file_base64: encoded_data,
         file_name:   file_name,
         file_type:   file_type || MimeMagic.by_magic(bytes).type
+      }
+    end
+
+    def claim_attachment_from_base46(base64, file_name, file_type)
+      {
+        file_base64: base64,
+        file_name:   file_name,
+        file_type:   file_type
       }
     end
 

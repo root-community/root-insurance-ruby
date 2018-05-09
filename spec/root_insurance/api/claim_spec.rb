@@ -267,8 +267,36 @@ describe RootInsurance::Api::Claim do
     end
 
     context "given a byte64 encoded string" do
-      it "does not encode the file data" do
+      it "does not re-encode the file data" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_base64: encoded))
+          .to_return(body: "{}")
 
+        client.create_claim_attachment(claim_id: claim_id, base64: encoded, file_name: 'unicorn.png', file_type: 'image/png')
+      end
+
+      it "includes the file name" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_name: "unicorn.png"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, base64: encoded, file_name: 'unicorn.png', file_type: 'image/png')
+      end
+
+      it "raises an error if the file name is not included" do
+        expect { client.create_claim_attachment(claim_id: claim_id, base64: encoded) }.to raise_error(ArgumentError)
+      end
+
+      it "includes the file type" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_type: "image/png"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, base64: encoded, file_name: 'unicorn.png', file_type: 'image/png')
+      end
+
+      it "raises an error if the file type is not included" do
+        expect { client.create_claim_attachment(claim_id: claim_id, base64: encoded, file_name: 'unicorn.png') }.to raise_error(ArgumentError)
       end
     end
 
