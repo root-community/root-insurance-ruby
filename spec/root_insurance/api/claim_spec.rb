@@ -238,7 +238,7 @@ describe RootInsurance::Api::Claim do
       end
 
       it "raises an error if the file name is not included" do
-        expect { client.create_claim_attachment(claim_id: claim_id, bytes: bytes) }.to raise_error(ArgumentError)
+        expect { client.create_claim_attachment(claim_id: claim_id, bytes: bytes) }.to raise_error(ArgumentError, 'file_name is required when supplying bytes')
       end
 
       it "guesses the file type if the file type is not included" do
@@ -284,7 +284,7 @@ describe RootInsurance::Api::Claim do
       end
 
       it "raises an error if the file name is not included" do
-        expect { client.create_claim_attachment(claim_id: claim_id, base64: encoded) }.to raise_error(ArgumentError)
+        expect { client.create_claim_attachment(claim_id: claim_id, base64: encoded) }.to raise_error(ArgumentError, 'file_name is required when supplying base64')
       end
 
       it "includes the file type" do
@@ -296,7 +296,7 @@ describe RootInsurance::Api::Claim do
       end
 
       it "raises an error if the file type is not included" do
-        expect { client.create_claim_attachment(claim_id: claim_id, base64: encoded, file_name: 'unicorn.png') }.to raise_error(ArgumentError)
+        expect { client.create_claim_attachment(claim_id: claim_id, base64: encoded, file_name: 'unicorn.png') }.to raise_error(ArgumentError, 'file_type is required when supplying base64')
       end
     end
 
