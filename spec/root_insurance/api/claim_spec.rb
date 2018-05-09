@@ -183,12 +183,14 @@ describe RootInsurance::Api::Claim do
     end
 
     context "given a file object" do
+      let(:file) { File.open(path) }
+
       it "encodes the file data" do
         stub_request(:post, post_url)
           .with(body: hash_including(file_base64: encoded))
           .to_return(body: "{}")
 
-        client.create_claim_attachment(claim_id: claim_id, file: File.open(path))
+        client.create_claim_attachment(claim_id: claim_id, file: file)
       end
 
       it "includes the file name" do
@@ -196,7 +198,7 @@ describe RootInsurance::Api::Claim do
           .with(body: hash_including(file_name: "unicorn.png"))
           .to_return(body: "{}")
 
-        client.create_claim_attachment(claim_id: claim_id, file: File.open(path))
+        client.create_claim_attachment(claim_id: claim_id, file: file)
       end
 
       it "includes the file type" do
@@ -204,7 +206,7 @@ describe RootInsurance::Api::Claim do
           .with(body: hash_including(file_type: "image/png"))
           .to_return(body: "{}")
 
-        client.create_claim_attachment(claim_id: claim_id, file: File.open(path))
+        client.create_claim_attachment(claim_id: claim_id, file: file)
       end
 
       it "includes the description" do
@@ -212,7 +214,7 @@ describe RootInsurance::Api::Claim do
           .with(body: hash_including(description: description))
           .to_return(body: "{}")
 
-        client.create_claim_attachment(claim_id: claim_id, file: File.open(path), description: description)
+        client.create_claim_attachment(claim_id: claim_id, file: file, description: description)
       end
     end
 
