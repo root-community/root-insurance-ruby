@@ -15,7 +15,7 @@ For help and support, please reach out to us on the Root Club Slack.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'root-insurance'
+gem 'root_insurance'
 ```
 
 And then execute:
