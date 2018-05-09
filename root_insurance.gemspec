@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'httparty'
+  spec.add_dependency 'mimemagic'
   spec.add_development_dependency "semvergen", "~> 1.9"
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 10.0"

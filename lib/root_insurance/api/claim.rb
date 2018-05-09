@@ -1,3 +1,5 @@
+require 'mimemagic'
+
 module RootInsurance::Api
   module Claim
     def list_claims(status: nil, approval: nil)
@@ -37,5 +39,28 @@ module RootInsurance::Api
     def list_claim_events(id:)
       get("claims/#{id}/events")
     end
+
+    def create_claim_attachment(claim_id:, path: nil, description: '')
+      data = if path
+        claim_attachment_from_path(path)
+      else
+        {}
+      end.merge({description: description})
+
+      post("claims/#{claim_id}/attachments", data)
+    end
+
+    private
+    def claim_attachment_from_path(path)
+      encoded_data = Base64.encode64(File.binread(path))
+      file_name = File.basename(path)
+
+      {
+        file_base64: encoded_data,
+        file_name:   file_name,
+        file_type:   MimeMagic.by_magic(File.open(path)).type
+      }
+    end
+
   end
 end
