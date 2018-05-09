@@ -219,8 +219,50 @@ describe RootInsurance::Api::Claim do
     end
 
     context "given the raw bytes" do
-      it "encodes the file data" do
+      let(:bytes) { File.open(path).read }
 
+      it "encodes the file data" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_base64: encoded))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, bytes: bytes, file_name: 'unicorn.png')
+      end
+
+      it "includes the file name" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_name: "unicorn.png"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, bytes: bytes, file_name: 'unicorn.png')
+      end
+
+      it "raises an error if the file name is not included" do
+        expect { client.create_claim_attachment(claim_id: claim_id, bytes: bytes) }.to raise_error(ArgumentError)
+      end
+
+      it "guesses the file type if the file type is not included" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_type: "image/png"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, bytes: bytes, file_name: 'unicorn.png')
+      end
+
+      it "includes the file type if the file type is included" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(file_type: "image/jpeg"))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, bytes: bytes, file_name: 'unicorn.png', file_type: 'image/jpeg')
+      end
+
+      it "includes the description" do
+        stub_request(:post, post_url)
+          .with(body: hash_including(description: description))
+          .to_return(body: "{}")
+
+        client.create_claim_attachment(claim_id: claim_id, bytes: bytes, file_name: 'unicorn.png', description: description)
       end
     end
 
