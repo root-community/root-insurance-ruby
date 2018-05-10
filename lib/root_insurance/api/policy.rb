@@ -1,9 +1,11 @@
 module RootInsurance::Api
   module Policy
-    def issue_policy(application_id:)
+    def issue_policy(application_id:, app_data: nil)
       data = {
         application_id: application_id,
       }
+
+      data.merge!(app_data: app_data) if app_data
 
       post(:policies, data)
     end
