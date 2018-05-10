@@ -6,6 +6,7 @@ require 'root_insurance/api/application'
 require 'root_insurance/api/policy'
 require 'root_insurance/api/claim'
 require 'root_insurance/api/call'
+require 'root_insurance/api/payment'
 
 class RootInsurance::Client
   include RootInsurance::Api::Quote
@@ -14,6 +15,7 @@ class RootInsurance::Client
   include RootInsurance::Api::Policy
   include RootInsurance::Api::Claim
   include RootInsurance::Api::Call
+  include RootInsurance::Api::Payment
 
   def initialize(app_id, app_secret, env=nil)
     @app_id = app_id
