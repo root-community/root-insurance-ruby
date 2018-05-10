@@ -22,7 +22,7 @@ describe RootInsurance::Api::Quote do
       end
     end
 
-    context "term cover" do |variable|
+    context "term cover" do
       let(:type) { "root_term" }
       let(:cover_amount) { 100_000_00 }
       let(:cover_period) { 'one_year' }
@@ -79,7 +79,7 @@ describe RootInsurance::Api::Quote do
         }
       end
 
-       it "posts to the correct data to the correct url" do
+      it "posts to the correct data to the correct url" do
         stub_request(:post, url)
           .with(body: expected_data)
           .to_return(body: "{}")
@@ -98,10 +98,10 @@ describe RootInsurance::Api::Quote do
   describe :list_gadget_models do
     let(:url) { "#{base_url}/gadgets/models" }
     it "gets from the correct url" do
-        stub_request(:get, url)
-          .to_return(body: "{}")
+      stub_request(:get, url)
+        .to_return(body: "{}")
 
-        client.list_gadget_models
-      end
+      client.list_gadget_models
+    end
   end
 end
