@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'httparty'
   spec.add_dependency 'mimemagic'
+  spec.add_development_dependency 'coveralls'
   spec.add_development_dependency "semvergen", "~> 1.9"
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 10.0"
