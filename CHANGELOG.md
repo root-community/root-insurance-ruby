@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.1.1 - Release date: 2018-11-05
+* Fix gemspec to allow publishing to rubygems.org
+
+
 # 1.1.0 - Release date: 2018-11-05
 * Added support for claim attachments
 * Added support to get calls
