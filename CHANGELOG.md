@@ -1,5 +1,12 @@
 # Changelog
 
+# 1.1.0 - Release date: 2018-11-05
+* Added support for claim attachments
+* Added support to get calls
+* Added support to add and attach payment methods
+* When issuing a polidy app data can be attached
+
+
 # 1.0.0 - Release date: 2018-09-05
 * Renamed gem to root_insurance
 * Removed unnecessarily complicated module nesting (it's now just RootInsurance)
