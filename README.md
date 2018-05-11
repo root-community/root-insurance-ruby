@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/root-community/root-insurance-ruby.svg?branch=master)](https://travis-ci.org/root-community/root-insurance-ruby)
 [![Coverage Status](https://coveralls.io/repos/github/root-community/root-insurance-ruby/badge.svg?branch=master)](https://coveralls.io/github/root-community/root-insurance-ruby?branch=master)
+[![Gem Version](https://badge.fury.io/rb/root_insurance.svg)](https://badge.fury.io/rb/root_insurance)
 
 Root is a company built by developers for developers. Open Source Software is part of our culture. We open-source as much of our codebase as we can.
 
