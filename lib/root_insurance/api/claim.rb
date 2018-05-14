@@ -15,10 +15,17 @@ module RootInsurance::Api
       get("claims/#{id}")
     end
 
-    def open_claim(policy_id: nil, policy_holder_id: nil)
+    def open_claim(policy_id: nil, policy_holder_id: nil, incident_type: nil, incident_cause: nil,
+                   incident_date: nil, app_data: nil, claimant: nil, requested_amount: nil)
       data = {
         policy_id:        policy_id,
-        policy_holder_id: policy_holder_id
+        policy_holder_id: policy_holder_id,
+        incident_type:    incident_type,
+        incident_cause:   incident_cause,
+        incident_date:    incident_date,
+        app_data:         app_data,
+        claimant:         claimant,
+        requested_amount: requested_amount
       }.reject { |key, value| value.nil? }
 
       post(:claims, data)
