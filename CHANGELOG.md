@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.5.0 - Release date: 2018-14-05
+* Added functionality to allow policies to be updated
+
+
 # 1.4.0 - Release date: 2018-14-05
 * Added functionality to filter policy list by holder's national id
 
