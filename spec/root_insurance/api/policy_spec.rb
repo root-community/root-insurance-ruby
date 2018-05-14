@@ -95,6 +95,19 @@ describe RootInsurance::Api::Policy do
     end
   end
 
+  describe :update_policy do
+    let(:app_data) { {gadget_color: "Space Grey", has_screen_cover: true} }
+    let(:patch_url) { "#{url}/#{policy_id}" }
+
+    it "patches to the correct url" do
+      stub_request(:patch, patch_url)
+        .with(body: {app_data: app_data})
+        .to_return(body: "{}")
+
+      client.update_policy(id: policy_id, app_data: app_data)
+    end
+  end
+
   describe :replace_policy do
     let(:quote_package_id) { "8b922b9d-e874-4b06-87d0-e1f16a2d57db" }
     let(:replace_url) { "#{url}/#{policy_id}/replace" }

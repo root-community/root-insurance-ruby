@@ -39,6 +39,12 @@ module RootInsurance::Api
       post("policies/#{id}/cancel", data)
     end
 
+    def update_policy(id:, app_data:)
+      data = {app_data: app_data}
+
+      patch("policies/#{id}", data)
+    end
+
     def replace_policy(id:, quote_package_id:)
       data = {quote_package_id: quote_package_id}
 
