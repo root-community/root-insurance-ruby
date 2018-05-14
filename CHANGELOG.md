@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.4.0 - Release date: 2018-14-05
+* Added functionality to filter policy list by holder's national id
+
+
 # 1.3.0 - Release date: 2018-14-05
 * Added functionality to update claims
 
