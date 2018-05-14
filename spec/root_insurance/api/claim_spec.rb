@@ -131,7 +131,7 @@ describe RootInsurance::Api::Claim do
       stub_request(:get, get_url)
         .to_return(body: "{}")
 
-      client.list_claim_events(id: claim_id)
+      client.list_claim_events(claim_id: claim_id)
     end
   end
 

@@ -36,8 +36,9 @@ module RootInsurance::Api
       post("claims/#{claim_id}/policyholder", data)
     end
 
-    def list_claim_events(id:)
-      get("claims/#{id}/events")
+    def list_claim_events(id: nil, claim_id: nil)
+      claim_id = claim_id || id
+      get("claims/#{claim_id}/events")
     end
 
     def create_claim_attachment(claim_id:, path: nil, file: nil, bytes: nil, base64: nil, file_name: nil, file_type: nil, description: '')
