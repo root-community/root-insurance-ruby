@@ -93,6 +93,35 @@ describe RootInsurance::Api::Claim do
     end
   end
 
+  describe :update_claim do
+    let(:url) { "#{base_url}/claims/#{claim_id}" }
+
+    let(:incident_type)  { "Theft" }
+    let(:incident_cause) { "Device stolen during burglary" }
+    let(:incident_date)  { "2017-10-16T10:12:02.872Z" }
+    let(:app_data)       { {key3: "value 3"} }
+    let(:requested_amount) { 13000000 }
+
+    it "patches the correct url with the correct data" do
+      stub_request(:patch, url)
+        .with(body: {
+          incident_type:  incident_type,
+          incident_cause: incident_cause,
+          incident_date:  incident_date,
+          app_data:       app_data,
+          requested_amount: requested_amount})
+        .to_return(body: "{}")
+
+      client.update_claim(
+        claim_id:       claim_id,
+        incident_type:  incident_type,
+        incident_cause: incident_cause,
+        incident_date:  incident_date,
+        app_data:       app_data,
+        requested_amount: requested_amount)
+    end
+  end
+
   describe :link_policy_to_claim do
     let(:policy_id) { "8349345c-a6c5-4bf9-8ebb-6bbfc1628715" }
 

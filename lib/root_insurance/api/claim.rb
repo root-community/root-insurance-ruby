@@ -31,6 +31,19 @@ module RootInsurance::Api
       post(:claims, data)
     end
 
+    def update_claim(claim_id:, incident_type: nil, incident_cause: nil, incident_date: nil,
+                     app_data: nil, requested_amount: nil)
+      data = {
+        incident_type:    incident_type,
+        incident_cause:   incident_cause,
+        incident_date:    incident_date,
+        app_data:         app_data,
+        requested_amount: requested_amount
+      }.reject { |key, value| value.nil? }
+
+      patch("claims/#{claim_id}", data)
+    end
+
     def link_policy_to_claim(claim_id:, policy_id:)
       data = {policy_id: policy_id}
 
