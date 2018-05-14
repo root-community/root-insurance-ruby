@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.1.2 - Release date: 2018-14-05
+* Make claim events api consistent
+
+
 # 1.1.1 - Release date: 2018-11-05
 * Fix gemspec to allow publishing to rubygems.org
 
