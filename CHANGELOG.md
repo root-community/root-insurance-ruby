@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.3.0 - Release date: 2018-14-05
+* Added functionality to update claims
+
+
 # 1.2.0 - Release date: 2018-14-05
 * Support all params for claim creation
 
