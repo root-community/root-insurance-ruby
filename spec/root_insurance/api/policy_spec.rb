@@ -54,11 +54,20 @@ describe RootInsurance::Api::Policy do
   end
 
   describe :list_policies do
+    let(:id_number) { "8704094800082" }
     it "gets from the correct url" do
       stub_request(:get, url)
         .to_return(body: "{}")
 
       client.list_policies
+    end
+
+    it "can be filtered on the policyholder's national id number" do
+      stub_request(:get, url)
+        .with(query: {id_number: id_number})
+        .to_return(body: "{}")
+
+      client.list_policies(id_number: id_number)
     end
   end
 

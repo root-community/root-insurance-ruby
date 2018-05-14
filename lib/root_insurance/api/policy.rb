@@ -23,8 +23,10 @@ module RootInsurance::Api
       put("policies/#{policy_id}/beneficiaries", data)
     end
 
-    def list_policies
-      get(:policies)
+    def list_policies(id_number: nil)
+      query = id_number ? {id_number: id_number} : nil
+
+      get(:policies, query)
     end
 
     def get_policy(id:)
