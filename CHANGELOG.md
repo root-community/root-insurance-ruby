@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.2.0 - Release date: 2018-14-05
+* Support all params for claim creation
+
+
 # 1.1.2 - Release date: 2018-14-05
 * Make claim events api consistent
 
