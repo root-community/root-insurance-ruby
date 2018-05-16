@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.7.4 - Release date: 2018-16-05
+* Added claim and call documentation
+
+
 # 1.7.3 - Release date: 2018-16-05
 * One more documentation fix
 
