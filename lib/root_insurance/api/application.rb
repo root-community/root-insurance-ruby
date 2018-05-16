@@ -11,7 +11,7 @@ module RootInsurance::Api
     # @param [Array<String>] children_ids SA ID numbers of the policyholder's children. Required if +number_of_children+ is greater than 0 on the quote. All children must be younger than 21.
     # @param [Array<String>] extended_famliy_ids SA ID number of the policyholder's extended family members. Required if the length of +extended_family_ages+ is greater than 0 on the quote. The ages inferred from the ID numbers must match the ages given in the quote step.
     # @return [Hash]
-
+    #
     # @example
     #   client.create_application(
     #     policyholder_id:  "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
