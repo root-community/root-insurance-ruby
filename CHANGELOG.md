@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.6.0 - Release date: 2018-16-05
+* Added support for policy holder app_data
+
+
 # 1.5.0 - Release date: 2018-14-05
 * Added functionality to allow policies to be updated
 
