@@ -104,7 +104,7 @@ describe RootInsurance::Api::Payment do
         .to_return(body: "{}")
 
       client.link_payment_method(
-        policy_id:         policy_holder_id,
+        policy_id:         policy_id,
         payment_method_id: payment_method_id)
     end
 
@@ -114,7 +114,7 @@ describe RootInsurance::Api::Payment do
         .to_return(body: "{}")
 
       client.link_payment_method(
-        policy_id:         policy_holder_id,
+        policy_id:         policy_id,
         payment_method_id: payment_method_id)
     end
   end
