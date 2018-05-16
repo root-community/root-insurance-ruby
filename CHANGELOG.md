@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.6.1 - Release date: 2018-16-05
+* Fixed variable in payment method spec
+* Add initial documentation to test rdoc and yard
+
+
 # 1.6.0 - Release date: 2018-16-05
 * Added support for policy holder app_data
 
