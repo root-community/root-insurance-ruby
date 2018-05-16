@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.7.1 - Release date: 2018-16-05
+* Documentation fixes
+
+
 # 1.7.0 - Release date: 2018-16-05
 * Added missing support for funeral and term modules when creating application
 
