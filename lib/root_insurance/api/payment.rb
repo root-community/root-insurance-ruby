@@ -7,7 +7,7 @@ module RootInsurance::Api
     # @param [String] type The payment method type. Curently only +'debit_order'+ is supported. If omitted, defaults to +'debit_order'+ (optional)
     # @param [Hash] bank_details Bank details to use for the debit order. See below for details.
     # @param [String] policy_ids The date on the which the incident occured. (optional)
-    # @return [Hash] An optional list of policy ids to which the payment method should be assigned. (optional)
+    # @return [Hash]
     #
     ## == Bank details
     # [account_holder (string)]   Name of account holder.
