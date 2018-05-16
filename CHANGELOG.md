@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.7.2 - Release date: 2018-16-05
+* Documentation fix
+
+
 # 1.7.1 - Release date: 2018-16-05
 * Documentation fixes
 
