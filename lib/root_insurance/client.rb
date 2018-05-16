@@ -17,6 +17,11 @@ class RootInsurance::Client
   include RootInsurance::Api::Call
   include RootInsurance::Api::Payment
 
+  # Initialize a new client
+  #
+  # @param [String] app_id The app's id
+  # @param [String] app_secret The app's secret. Currently it's a blank string
+  # @param [Symbol] env The environment to use. Either `:production` or `:sandbox`. The default is `:sandbox`
   def initialize(app_id, app_secret, env=nil)
     @app_id = app_id
     @app_secret = app_secret
