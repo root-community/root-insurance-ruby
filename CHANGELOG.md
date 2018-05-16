@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.7.0 - Release date: 2018-16-05
+* Added missing support for funeral and term modules when creating application
+
+
 # 1.6.1 - Release date: 2018-16-05
 * Fixed variable in payment method spec
 * Add initial documentation to test rdoc and yard
