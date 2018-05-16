@@ -108,19 +108,6 @@ describe RootInsurance::Api::Policy do
     end
   end
 
-  describe :replace_policy do
-    let(:quote_package_id) { "8b922b9d-e874-4b06-87d0-e1f16a2d57db" }
-    let(:replace_url) { "#{url}/#{policy_id}/replace" }
-
-    it "posts to the correct url" do
-      stub_request(:post, replace_url)
-        .with(body: {quote_package_id: quote_package_id})
-        .to_return(body: "{}")
-
-      client.replace_policy(id: policy_id, quote_package_id: quote_package_id)
-    end
-  end
-
   describe :update_policy_billing_amount do
     let(:billing_amount) { 45000 }
     let(:update_url) { "#{url}/#{policy_id}/billing_amount" }

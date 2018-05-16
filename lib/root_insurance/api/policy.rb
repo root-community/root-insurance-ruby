@@ -45,12 +45,6 @@ module RootInsurance::Api
       patch("policies/#{id}", data)
     end
 
-    def replace_policy(id:, quote_package_id:)
-      data = {quote_package_id: quote_package_id}
-
-      post("policies/#{id}/replace", data)
-    end
-
     def update_policy_billing_amount(id:, billing_amount:)
       data = {billing_amount: billing_amount}
 
