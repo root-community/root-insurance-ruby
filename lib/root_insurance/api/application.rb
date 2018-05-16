@@ -13,11 +13,11 @@ module RootInsurance::Api
     # @return [Hash]
 
     # @example
-    # client.create_application(
-    #   policyholder_id:  "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
-    #   quote_package_id: "f4397823-db4a-4d6a-a06b-08e1a2a3172c",
-    #   monthly_premium:  50000,
-    #   serial_number:    "1234567890")
+    #   client.create_application(
+    #     policyholder_id:  "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+    #     quote_package_id: "f4397823-db4a-4d6a-a06b-08e1a2a3172c",
+    #     monthly_premium:  50000,
+    #     serial_number:    "1234567890")
     def create_application(policyholder_id:, quote_package_id:, monthly_premium:,
                            serial_number: nil, spouse_id: nil, children_ids: nil, extended_famliy_ids: nil)
       data = {
