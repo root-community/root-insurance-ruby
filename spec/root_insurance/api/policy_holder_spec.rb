@@ -45,6 +45,42 @@ describe RootInsurance::Api::PolicyHolder do
 
       client.list_policy_holders
     end
+
+    context "when supplying an id number" do
+      let(:id_number) { "6801015800084" }
+
+      it "includes the correct query string" do
+        stub_request(:get, url)
+          .with(query: {id_number: id_number})
+          .to_return(body: "{}")
+
+        client.list_policy_holders(id_number: id_number)
+      end
+    end
+
+    context "when supplying a single object to include" do
+      let(:includes) { "policies" }
+
+      it "includes the correct query string" do
+        stub_request(:get, url)
+          .with(query: {include: includes})
+          .to_return(body: "{}")
+
+        client.list_policy_holders(included_objects: includes)
+      end
+    end
+
+    context "when supplying a list of objects to include" do
+      let(:includes) { ["a", "b", "c"] }
+
+      it "includes the correct query string" do
+        stub_request(:get, url)
+          .with(query: {include: includes.join(",")})
+          .to_return(body: "{}")
+
+        client.list_policy_holders(included_objects: includes)
+      end
+    end
   end
 
   describe :get_policy_holder do

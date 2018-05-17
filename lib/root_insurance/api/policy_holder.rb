@@ -16,8 +16,28 @@ module RootInsurance::Api
       post(:policyholders, data)
     end
 
-    def list_policy_holders
-      get(:policyholders)
+    # List policy holders
+    #
+    # @param [Hash] id_number An optional ID or passport number to filter by.
+    # @param [Array<String, Symbol>, String, Symbol] included_objects An optional list, or single item, of underlying objects to include, e.g. +?include=policies+. Currently, only +policies+ is supported, which will include all policies owned by the policyholder.
+    # @return [Array<Hash>]
+    #
+    # @example
+    #   client.list_policy_holders
+    def list_policy_holders(id_number: nil, included_objects: nil)
+      includes = case included_objects
+      when String, Symbol
+        included_objects
+      when Array
+        included_objects.join(",")
+      end
+
+      query = {
+        include: includes,
+        id_number: id_number
+      }.reject { |_, v| v.nil? }
+
+      get(:policyholders, query)
     end
 
     def get_policy_holder(id:)
