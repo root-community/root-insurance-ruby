@@ -1,5 +1,33 @@
 module RootInsurance::Api
   module PolicyHolder
+    # Create a policy holder
+    #
+    # @param [Hash] id Hash containing policyholder's identification number, type and country. See below for details.
+    # @param [String] first_name Policyholder's legal first name.
+    # @param [String] last_name Policyholder's legal last name.
+    # @param [String] email Policyholder's contact email address. (Optional)
+    # @param [String] date_of_birth The policyholder's date of birth in the format YYYYMMDD. This field may be omitted if the policyholder's id type is +id+.
+    # @param [Hash] cellphone Hash containing policyholder's cellphone number and country. See below for details. (Optional)
+    # @param [Hash] app_data A hash containing additional custom data for the policy holder.
+    # @return [Hash]
+    #
+    ## == ID
+    # [type (string or symbol)]   Either +:id+ or +:passport+
+    # [number (string)]   The id or passport number
+    # [country (string)]   The ISO Alpha-2 country code of the country of the id/passport number.
+    #
+    ## == Cellphone
+    # [number (string)]   The cellphone number
+    # [country (string)]   The ISO Alpha-2 country code of the country of the cellphone number.
+    #
+    # @example
+    #  client.create_policy_holder(
+    #    id:         {type: :id, number: "6801015800084", country: "ZA"},
+    #    first_name: 'Erlich',
+    #    last_name:  'Bachman',
+    #    email:      'erlich@avaito.com',
+    #    app_data:   {company: 'Aviato'})
+    #
     def create_policy_holder(id:, first_name:, last_name:, email: nil, date_of_birth: nil, cellphone: nil, app_data: nil)
       raise ArgumentError.new('id needs to be a hash') unless id.is_a? Hash
 
@@ -50,6 +78,24 @@ module RootInsurance::Api
       get("policyholders/#{id}", query)
     end
 
+    # Update a policy holder
+    #
+    # @param [String] id The unique identifier of the policy holder
+    # @param [String] email Policyholder's contact email address. (Optional)
+    # @param [Hash] cellphone Hash containing policyholder's cellphone number and country. See below for details. (Optional)
+    # @param [Hash] app_data A hash containing additional custom data for the policy holder.
+    # @return [Hash]
+    #
+    ## == Cellphone
+    # [number (string)]   The cellphone number
+    # [country (string)]   The ISO Alpha-2 country code of the country of the cellphone number.
+    #
+    # @example
+    #   client.update_policy_holders(
+    #     id: 'bf1ada91-eecb-4f47-9bfa-1258bb1e0055',
+    #     cellphone: {number: '07741011337', country: 'ZA'},
+    #     app_data:  {company: 'Pied Piper'})
+    #
     def update_policy_holder(id:, email: nil, cellphone: nil, app_data: nil)
       data = {
         email:     email,
@@ -60,6 +106,14 @@ module RootInsurance::Api
       patch("policyholders/#{id}", data)
     end
 
+    # List all the events which are applicable to this policy holder.
+    #
+    # @param [String] id The unique identifier of the policy holder
+    # @return [Array<Hash>]
+    #
+    # @example
+    #  client.list_policy_holder_events(id: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e")
+    #
     def list_policy_holder_events(id:)
       get("policyholders/#{id}/events")
     end
