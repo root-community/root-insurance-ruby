@@ -1,5 +1,12 @@
 # Changelog
 
+# 1.8.0 - Release date: 2018-17-05
+* Removed old replace_policy method
+* Add support to filter on id number when listing policy holders
+* Added support to include oblects when getting a list of policy holders and a individual policy holder
+* Added more documentation
+
+
 # 1.7.4 - Release date: 2018-16-05
 * Added claim and call documentation
 
