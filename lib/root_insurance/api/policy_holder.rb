@@ -23,25 +23,31 @@ module RootInsurance::Api
     # @return [Array<Hash>]
     #
     # @example
-    #   client.list_policy_holders
+    #   client.list_policy_holders(id_number: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e", included_objects: :policies)
     def list_policy_holders(id_number: nil, included_objects: nil)
-      includes = case included_objects
-      when String, Symbol
-        included_objects
-      when Array
-        included_objects.join(",")
-      end
-
       query = {
-        include: includes,
+        include:   format_included_objects(included_objects),
         id_number: id_number
       }.reject { |_, v| v.nil? }
 
       get(:policyholders, query)
     end
 
-    def get_policy_holder(id:)
-      get("policyholders/#{id}")
+    # Get a policy holder
+    #
+    # @param [String] id The unique identifier of the policy holder
+    # @param [Array<String, Symbol>, String, Symbol] included_objects An optional list, or single item, of underlying objects to include, e.g. +?include=policies+. Currently, only +policies+ is supported, which will include all policies owned by the policyholder.
+    # @return [Hash]
+    #
+    # @example
+    #   client.get_policy_holder(id: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e", included_objects: :policies)
+    #
+    def get_policy_holder(id:, included_objects: nil)
+      query = {
+        include:   format_included_objects(included_objects),
+      }.reject { |_, v| v.nil? }
+
+      get("policyholders/#{id}", query)
     end
 
     def update_policy_holder(id:, email: nil, cellphone: nil, app_data: nil)
@@ -56,6 +62,16 @@ module RootInsurance::Api
 
     def list_policy_holder_events(id:)
       get("policyholders/#{id}/events")
+    end
+
+    private
+    def format_included_objects(included_objects)
+      case included_objects
+      when String, Symbol
+        included_objects
+      when Array
+        included_objects.join(",")
+      end
     end
   end
 end

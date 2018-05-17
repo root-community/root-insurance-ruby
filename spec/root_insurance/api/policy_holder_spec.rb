@@ -92,6 +92,30 @@ describe RootInsurance::Api::PolicyHolder do
 
       client.get_policy_holder(id: policyholder_id)
     end
+
+    context "when supplying a single object to include" do
+      let(:includes) { "policies" }
+
+      it "includes the correct query string" do
+        stub_request(:get, get_url)
+          .with(query: {include: includes})
+          .to_return(body: "{}")
+
+        client.get_policy_holder(id: policyholder_id, included_objects: includes)
+      end
+    end
+
+    context "when supplying a list of objects to include" do
+      let(:includes) { ["a", "b", "c"] }
+
+      it "includes the correct query string" do
+        stub_request(:get, get_url)
+          .with(query: {include: includes.join(",")})
+          .to_return(body: "{}")
+
+        client.get_policy_holder(id: policyholder_id, included_objects: includes)
+      end
+    end
   end
 
   describe :update_policy_holder do
