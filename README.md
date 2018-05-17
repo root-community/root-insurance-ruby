@@ -22,11 +22,18 @@ gem 'root_insurance'
 
 And then execute:
 
-    $ bundle
+```bash
+bundle
+```
 
-## Usage
+## Quick start
+1. Create an instance of `RootInsurance::Client`
+```ruby
+client = RootInsurance::Client.new("test_key_tYILz1640w9q5n5kNQUZ", '', :sandbox)
+```
 
-See the [wiki](https://github.com/root-community/root-insurance-ruby/wiki).
+2. Use the api
+See the documentation [here](https://www.rubydoc.info/gems/root_insurance/).
 
 ## Contributing
 If you wish to contribute to this repository, please fork it and send a PR our way.
