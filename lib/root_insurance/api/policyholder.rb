@@ -1,5 +1,5 @@
 module RootInsurance::Api
-  module PolicyHolder
+  module Policyholder
     # Create a policy holder
     #
     # @param [Hash] id Hash containing policyholder's identification number, type and country. See below for details.
@@ -28,7 +28,7 @@ module RootInsurance::Api
     #    email:      'erlich@avaito.com',
     #    app_data:   {company: 'Aviato'})
     #
-    def create_policy_holder(id:, first_name:, last_name:, email: nil, date_of_birth: nil, cellphone: nil, app_data: nil)
+    def create_policyholder(id:, first_name:, last_name:, email: nil, date_of_birth: nil, cellphone: nil, app_data: nil)
       raise ArgumentError.new('id needs to be a hash') unless id.is_a? Hash
 
       data = {
@@ -51,8 +51,8 @@ module RootInsurance::Api
     # @return [Array<Hash>]
     #
     # @example
-    #   client.list_policy_holders(id_number: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e", included_objects: :policies)
-    def list_policy_holders(id_number: nil, included_objects: nil)
+    #   client.list_policyholders(id_number: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e", included_objects: :policies)
+    def list_policyholders(id_number: nil, included_objects: nil)
       query = {
         include:   format_included_objects(included_objects),
         id_number: id_number
@@ -68,9 +68,9 @@ module RootInsurance::Api
     # @return [Hash]
     #
     # @example
-    #   client.get_policy_holder(id: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e", included_objects: :policies)
+    #   client.get_policyholder(id: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e", included_objects: :policies)
     #
-    def get_policy_holder(id:, included_objects: nil)
+    def get_policyholder(id:, included_objects: nil)
       query = {
         include:   format_included_objects(included_objects),
       }.reject { |_, v| v.nil? }
@@ -91,12 +91,12 @@ module RootInsurance::Api
     # [country (string)]   The ISO Alpha-2 country code of the country of the cellphone number.
     #
     # @example
-    #   client.update_policy_holders(
+    #   client.update_policyholders(
     #     id: 'bf1ada91-eecb-4f47-9bfa-1258bb1e0055',
     #     cellphone: {number: '07741011337', country: 'ZA'},
     #     app_data:  {company: 'Pied Piper'})
     #
-    def update_policy_holder(id:, email: nil, cellphone: nil, app_data: nil)
+    def update_policyholder(id:, email: nil, cellphone: nil, app_data: nil)
       data = {
         email:     email,
         cellphone: cellphone,
@@ -112,9 +112,9 @@ module RootInsurance::Api
     # @return [Array<Hash>]
     #
     # @example
-    #  client.list_policy_holder_events(id: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e")
+    #  client.list_policyholder_events(id: "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e")
     #
-    def list_policy_holder_events(id:)
+    def list_policyholder_events(id:)
       get("policyholders/#{id}/events")
     end
 

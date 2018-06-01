@@ -1,7 +1,7 @@
 require 'httparty'
 
 require 'root_insurance/api/quote'
-require 'root_insurance/api/policy_holder'
+require 'root_insurance/api/policyholder'
 require 'root_insurance/api/application'
 require 'root_insurance/api/policy'
 require 'root_insurance/api/claim'
@@ -10,7 +10,7 @@ require 'root_insurance/api/payment'
 
 class RootInsurance::Client
   include RootInsurance::Api::Quote
-  include RootInsurance::Api::PolicyHolder
+  include RootInsurance::Api::Policyholder
   include RootInsurance::Api::Application
   include RootInsurance::Api::Policy
   include RootInsurance::Api::Claim

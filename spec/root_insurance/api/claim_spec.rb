@@ -82,13 +82,13 @@ describe RootInsurance::Api::Claim do
     end
 
     context "given a policy holder id" do
-      let(:policy_holder_id) { "8349345c-a6c5-4bf9-8ebb-6bbfc1628715" }
+      let(:policyholder_id) { "8349345c-a6c5-4bf9-8ebb-6bbfc1628715" }
       it "posts the correct data" do
         stub_request(:post, url)
-          .with(body: {policy_holder_id: policy_holder_id})
+          .with(body: {policyholder_id: policyholder_id})
           .to_return(body: "{}")
 
-        client.open_claim(policy_holder_id: policy_holder_id)
+        client.open_claim(policyholder_id: policyholder_id)
       end
     end
   end

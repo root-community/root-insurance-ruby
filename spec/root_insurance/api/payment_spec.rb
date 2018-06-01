@@ -7,7 +7,7 @@ describe RootInsurance::Api::Payment do
 
   let(:client) { RootInsurance::Client.new(app_id, app_secret, environment) }
 
-  let(:policy_holder_id) { "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e" }
+  let(:policyholder_id) { "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e" }
 
   let(:bank_details) do
     {
@@ -20,7 +20,7 @@ describe RootInsurance::Api::Payment do
   end
 
   describe :create_payment_method do
-    let(:url) { "#{base_url}/policyholders/#{policy_holder_id}/payment-methods" }
+    let(:url) { "#{base_url}/policyholders/#{policyholder_id}/payment-methods" }
     let(:expected_data) do
       {
         type: 'debit_order',
@@ -33,7 +33,7 @@ describe RootInsurance::Api::Payment do
         .to_return(body: "{}")
 
       client.create_payment_method(
-        policy_holder_id: policy_holder_id,
+        policyholder_id:  policyholder_id,
         bank_details:     bank_details)
     end
 
@@ -43,7 +43,7 @@ describe RootInsurance::Api::Payment do
         .to_return(body: "{}")
 
       client.create_payment_method(
-        policy_holder_id: policy_holder_id,
+        policyholder_id:  policyholder_id,
         bank_details:     bank_details)
     end
 
@@ -56,7 +56,7 @@ describe RootInsurance::Api::Payment do
 
         expect do
           client.create_payment_method(
-            policy_holder_id: policy_holder_id,
+            policyholder_id:  policyholder_id,
             bank_details:     bank_details.dup.tap { |h| h.delete(random_key) })
         end.to raise_exception(ArgumentError, "Bank details need to include #{random_key}")
 
@@ -71,7 +71,7 @@ describe RootInsurance::Api::Payment do
           .to_return(body: "{}")
 
         client.create_payment_method(
-          policy_holder_id: policy_holder_id,
+          policyholder_id:  policyholder_id,
           bank_details:     bank_details,
           policy_ids:       policy_id)
 
@@ -86,7 +86,7 @@ describe RootInsurance::Api::Payment do
           .to_return(body: "{}")
 
         client.create_payment_method(
-          policy_holder_id: policy_holder_id,
+          policyholder_id:  policyholder_id,
           bank_details:     bank_details,
           policy_ids:       [policy_id])
 

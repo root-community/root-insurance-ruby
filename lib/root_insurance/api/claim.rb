@@ -35,7 +35,7 @@ module RootInsurance::Api
     # Open a claim
     #
     # @param [String] policy_id The ID of the policy under which the claim is being made. (optional)
-    # @param [String] policy_holder_id The ID of the policyholder for whom the claim is being made. (optional)
+    # @param [String] policyholder_id The ID of the policyholder for whom the claim is being made. (optional)
     # @param [String] incident_type A description of the incident type. (optional)
     # @param [String] incident_cause A description of the cause of the incident. (optional)
     # @param [String] incident_date The date on the which the incident occured. (optional)
@@ -61,11 +61,11 @@ module RootInsurance::Api
     #       key1: "value 1"
     #       key2: "value 2"})
     #
-    def open_claim(policy_id: nil, policy_holder_id: nil, incident_type: nil, incident_cause: nil,
+    def open_claim(policy_id: nil, policyholder_id: nil, incident_type: nil, incident_cause: nil,
                    incident_date: nil, app_data: nil, claimant: nil, requested_amount: nil)
       data = {
         policy_id:        policy_id,
-        policy_holder_id: policy_holder_id,
+        policyholder_id:  policyholder_id,
         incident_type:    incident_type,
         incident_cause:   incident_cause,
         incident_date:    incident_date,

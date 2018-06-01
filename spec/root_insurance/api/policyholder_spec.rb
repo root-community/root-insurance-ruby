@@ -1,4 +1,4 @@
-describe RootInsurance::Api::PolicyHolder do
+describe RootInsurance::Api::Policyholder do
   let(:base_url) { "https://sandbox.root.co.za/v1/insurance" }
   let(:url) { "#{base_url}/policyholders" }
 
@@ -10,7 +10,7 @@ describe RootInsurance::Api::PolicyHolder do
 
   let(:policyholder_id) { "128ba0c0-3f6a-4f8b-9b40-e2066b02b59e" }
 
-  describe :create_policy_holder do
+  describe :create_policyholder do
     let(:id_obj) { {type: 'id', number: '6801015800084', country: 'ZA'} }
     let(:first_name) { "Erlich" }
     let(:last_name)  { "Bachman" }
@@ -30,7 +30,7 @@ describe RootInsurance::Api::PolicyHolder do
         .with(body: expected_body)
         .to_return(body: "{}")
 
-      client.create_policy_holder(
+      client.create_policyholder(
         id:         id_obj,
         first_name: first_name,
         last_name:  last_name,
@@ -38,12 +38,12 @@ describe RootInsurance::Api::PolicyHolder do
     end
   end
 
-  describe :list_policy_holders do
+  describe :list_policyholders do
     it "gets from the correct url" do
       stub_request(:get, url)
         .to_return(body: "{}")
 
-      client.list_policy_holders
+      client.list_policyholders
     end
 
     context "when supplying an id number" do
@@ -54,7 +54,7 @@ describe RootInsurance::Api::PolicyHolder do
           .with(query: {id_number: id_number})
           .to_return(body: "{}")
 
-        client.list_policy_holders(id_number: id_number)
+        client.list_policyholders(id_number: id_number)
       end
     end
 
@@ -66,7 +66,7 @@ describe RootInsurance::Api::PolicyHolder do
           .with(query: {include: includes})
           .to_return(body: "{}")
 
-        client.list_policy_holders(included_objects: includes)
+        client.list_policyholders(included_objects: includes)
       end
     end
 
@@ -78,19 +78,19 @@ describe RootInsurance::Api::PolicyHolder do
           .with(query: {include: includes.join(",")})
           .to_return(body: "{}")
 
-        client.list_policy_holders(included_objects: includes)
+        client.list_policyholders(included_objects: includes)
       end
     end
   end
 
-  describe :get_policy_holder do
+  describe :get_policyholder do
     let(:get_url) { "#{url}/#{policyholder_id}" }
 
     it "gets from the correct url" do
       stub_request(:get, get_url)
         .to_return(body: "{}")
 
-      client.get_policy_holder(id: policyholder_id)
+      client.get_policyholder(id: policyholder_id)
     end
 
     context "when supplying a single object to include" do
@@ -101,7 +101,7 @@ describe RootInsurance::Api::PolicyHolder do
           .with(query: {include: includes})
           .to_return(body: "{}")
 
-        client.get_policy_holder(id: policyholder_id, included_objects: includes)
+        client.get_policyholder(id: policyholder_id, included_objects: includes)
       end
     end
 
@@ -113,12 +113,12 @@ describe RootInsurance::Api::PolicyHolder do
           .with(query: {include: includes.join(",")})
           .to_return(body: "{}")
 
-        client.get_policy_holder(id: policyholder_id, included_objects: includes)
+        client.get_policyholder(id: policyholder_id, included_objects: includes)
       end
     end
   end
 
-  describe :update_policy_holder do
+  describe :update_policyholder do
     let(:policyholder_url) { "#{url}/#{policyholder_id}" }
     let(:email)     { "erlich@piedpiper.com" }
     let(:cellphone) { "+27741011337" }
@@ -129,7 +129,7 @@ describe RootInsurance::Api::PolicyHolder do
           .with(body: {email: email})
           .to_return(body: "{}")
 
-        client.update_policy_holder(
+        client.update_policyholder(
           id:    policyholder_id,
           email: email)
       end
@@ -141,21 +141,21 @@ describe RootInsurance::Api::PolicyHolder do
           .with(body: {cellphone: cellphone})
           .to_return(body: "{}")
 
-        client.update_policy_holder(
+        client.update_policyholder(
           id:        policyholder_id,
           cellphone: cellphone)
       end
     end
   end
 
-  describe :list_policy_holder_events do
+  describe :list_policyholder_events do
     let(:events_url) { "#{url}/#{policyholder_id}/events" }
 
     it "gets from the correct url" do
       stub_request(:get, events_url)
         .to_return(body: "{}")
 
-      client.list_policy_holder_events(id: policyholder_id)
+      client.list_policyholder_events(id: policyholder_id)
     end
   end
 
