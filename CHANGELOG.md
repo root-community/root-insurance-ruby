@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.9.0 - Release date: 2018-01-06
+* Changed all instances of policy_holder to policyholder to be more consistent
+
+
 # 1.8.0 - Release date: 2018-17-05
 * Removed old replace_policy method
 * Add support to filter on id number when listing policy holders
