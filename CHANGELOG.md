@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.9.1 - Release date: 2018-10-03
+* Fixed module nesting to avoid rails autoloading weirdness
+
+
 # 1.9.0 - Release date: 2018-01-06
 * Changed all instances of policy_holder to policyholder to be more consistent
 
