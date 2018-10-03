@@ -64,7 +64,7 @@ module RootInsurance
 
         post(:quotes, data)
       end
-  
+
       def create_term_quote(opts)
         data = {
           type:             :root_term,
@@ -79,7 +79,7 @@ module RootInsurance
 
         post(:quotes, data)
       end
-  
+
       def create_funeral_quote(opts)
         data = {
           type:                 :root_funeral,
@@ -89,7 +89,7 @@ module RootInsurance
           extended_family_ages: opts[:extended_family_ages]
         }
         post(:quotes, data)
-      end  
+      end
     end
   end
 end

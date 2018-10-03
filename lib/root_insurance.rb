@@ -4,5 +4,4 @@ require 'root_insurance/exceptions'
 
 module RootInsurance
 
-
 end

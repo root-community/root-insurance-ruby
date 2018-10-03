@@ -1,5 +1,5 @@
 module RootInsurance
-  module Api      
+  module Api
     module Policy
 
       # Issue a policy

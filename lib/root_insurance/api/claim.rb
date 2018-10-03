@@ -1,7 +1,7 @@
 require 'mimemagic'
 
 module RootInsurance
-  module Api      
+  module Api
     module Claim
 
       # List all claims
